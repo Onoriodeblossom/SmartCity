@@ -1,8 +1,9 @@
+import React, {useState} from "react"
 import Head from 'next/head'
 import Image from 'next/image'
 
 
-export default function Home() {
+ const Home:React.FC = () => {
   return (
     <div>
       <Head>
@@ -12,8 +13,10 @@ export default function Home() {
       </Head>
 
       <main>
-         <h2 className='text-2xl'>Smart-city</h2>
+         <h2 className='text-2xl '>Smart-city</h2>
       </main>
     </div>
   )
 }
+
+export default Home;
