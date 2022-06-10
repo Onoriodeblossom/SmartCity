@@ -1,6 +1,7 @@
-import React, {useState} from "react"
-import Head from 'next/head'
-import Image from 'next/image'
+import React, {useState} from "react";
+import Head from 'next/head';
+import Image from 'next/image';
+import Layout from "../components/Layout";
 
 
  const Home:React.FC = () => {
@@ -13,7 +14,9 @@ import Image from 'next/image'
       </Head>
 
       <main>
-         <h2 className='text-2xl '>Smart-city</h2>
+        <Layout footer>
+          <h2 className='text-2xl '>Smart-city</h2>
+        </Layout> 
       </main>
     </div>
   )

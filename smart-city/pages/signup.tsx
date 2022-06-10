@@ -58,7 +58,7 @@ const label = () => {
 			</Head>
 			<main>
        <div className="md:bg-[url('/Assets/background1.png')] sm:fixed w-full h-full">
-         <div className="welcome_div py-7 w-full bg-white  md:w-4/5 lg:w-3/4 sm:absolute left-[50%] top-[50%] sm:transform sm:translate-x-[-50%] sm:translate-y-[-50%]">
+         <div className="welcome_div py-9 w-full bg-white  md:w-4/5 lg:w-3/4 xl:w-[60%] sm:absolute left-[50%] top-[50%] sm:transform sm:translate-x-[-50%] sm:translate-y-[-50%]">
             <div className="content w-[90%] md:w-2/3 lg:w-3/5 mx-auto">
               <header className='text-center'>
                 <h2 className=' text-xl md:text-2xl lg:text-3xl font-bold tracking-wider '>Create a free account</h2>
@@ -75,6 +75,7 @@ const label = () => {
                    className='outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm ' 
                    type='text'
                    placeholder='Enter your full name' 
+                   autoComplete="off"
                    required/>
                  </div>
                   <div className="email mb-3 mt-4">
@@ -85,6 +86,7 @@ const label = () => {
                    className='outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm ' 
                    type='email'
                    placeholder='Enter your email address' 
+                   autoComplete="off"
                    required/>
                  </div>
                  <div className="password mb-3">
@@ -96,6 +98,7 @@ const label = () => {
                      className='w-[90%] outline-none' 
                     type={showPassword ? 'text' : 'password'}
                     placeholder='Enter your password'
+                    autoComplete="off"
                     required/>
                     <span 
                      onClick={() => setShowPassword(!showPassword)}

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useMediaPredicate } from "react-media-hook";
+//import { useMediaPredicate } from "react-media-hook";
 import Footer from './Footer'
 import NavBar from './Navbar'
 import MobileNavbar from './Navbar/mobile'
@@ -12,8 +12,8 @@ import MobileNavbar from './Navbar/mobile'
  }
 
 const Layout:React.FC<Props> = ({children, siteTitle,footer}) => {
-  const biggerThan768 = useMediaPredicate("(min-width: 768px)");
-  
+  //const biggerThan768 = useMediaPredicate("(min-width: 768px)");
+
   return(
     <div>
 			<Head>
@@ -23,7 +23,12 @@ const Layout:React.FC<Props> = ({children, siteTitle,footer}) => {
 			</Head>
 			<main>
         <header>
-          {biggerThan768?  <NavBar/>: <MobileNavbar/> }
+          <div className='hidden md:block'>
+            <NavBar/>
+          </div>
+          <div className = "md:hidden">
+            <MobileNavbar/>
+          </div>
         </header>
 				{children}
         {footer? <Footer/> : null}

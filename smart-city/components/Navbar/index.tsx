@@ -1,10 +1,22 @@
-import { Li, Nav } from '../styles'
-import Image from 'next/image'
-import Link from 'next/link'
-import Logo from '../Logo'
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { Li, Nav } from '../styles';
+import Logo from '../Logo';
 
 
 const NavBar:React.FC = () => {
+ const {pathname} = useRouter();
+  
+ const  route = (path:any) => {
+   const routeStyle = 'border-b-[3px] border-solid border-[#F28E13]'
+   if(pathname === path){
+     return routeStyle
+   }
+ }
+
+
+
   return(
     <Nav>
       <div>
@@ -13,12 +25,12 @@ const NavBar:React.FC = () => {
       </div>
       <div> 
         <ul className='flex items-center'>
-          <Li>
+          <Li className = {route('/')}>
             <Link href="/">
               <a>Home</a>
             </Link>   
           </Li>
-          <Li>  
+          <Li className = {route('/about')}>  
             <Link href="/about">
               <a>About</a>
             </Link>

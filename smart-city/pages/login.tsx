@@ -29,8 +29,8 @@ const LoginPage:React.FC<Props> = ({siteTitle}) => {
 				<title>{siteTitle? siteTitle: 'Smart-city'}</title>
 			</Head>
 			<main>
-       <div className="md:bg-[url('/Assets/background1.png')] fixed w-full h-full">
-         <div className="welcome_div py-7 w-full bg-white  md:w-4/5 lg:w-3/4 absolute left-[50%] top-[50%] transform translate-x-[-50%] translate-y-[-50%]">
+       <div className="md:bg-[url('/Assets/background1.png')] sm:fixed w-full h-full">
+         <div className="welcome_div py-9 pt-12 w-full bg-white  md:w-4/5 lg:w-3/4 xl:w-[60%] sm:absolute left-[50%] top-[50%] sm:transform sm:translate-x-[-50%] sm:translate-y-[-50%]">
             <div className="content w-[90%] md:w-2/3 lg:w-3/5 mx-auto">
               <header className='text-center'>
                 <h2 className=' text-xl md:text-2xl lg:text-3xl font-bold tracking-wider '>Welcome Back</h2>
@@ -47,6 +47,7 @@ const LoginPage:React.FC<Props> = ({siteTitle}) => {
                    className='outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm ' 
                    type='email'
                    placeholder='Enter your email address' 
+                   autoComplete="off"
                    required/>
                  </div>
                  <div className="password mb-3">
@@ -58,6 +59,7 @@ const LoginPage:React.FC<Props> = ({siteTitle}) => {
                      className='w-[90%] outline-none' 
                     type={showPassword ? 'text' : 'password'}
                     placeholder='Enter your password'
+                    autoComplete="off"
                     required/>
                     <span 
                      onClick={() => setShowPassword(!showPassword)}
