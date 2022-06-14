@@ -59,11 +59,11 @@ const MobileNavbar = () => {
                 <a>Room mates</a>
               </Link>
             </li>
-            <li className='my-3 text-white text-lg'>  
+            {/* <li className='my-3 text-white text-lg'>  
               <Link href="/contact-us">
                 <a>Contact Us</a>
               </Link>
-            </li>
+            </li> */}
             </ul>
               <button className = ' bg-white text-[#2131C2] px-3 py-2 rounded-sm font-normal text-sm md:text-md lg:text-lg'>
                 <Link href="/post ">

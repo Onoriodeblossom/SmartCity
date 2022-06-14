@@ -23,8 +23,8 @@ const NavBar:React.FC = () => {
         <Logo
          footer/>
       </div>
-      <div> 
-        <ul className='flex items-center'>
+      <div className='flex items-center'> 
+        <ul className='flex items-center mr-4'>
           <Li className = {route('/')}>
             <Link href="/">
               <a>Home</a>
@@ -40,25 +40,26 @@ const NavBar:React.FC = () => {
               <a>Hostel</a>
             </Link>
           </Li>
-          <Li>
+          <Li className = {route('/roommates')}>
             <Link href="/roommates">
               <a>Room mates</a>
             </Link>
           </Li>
-          <Li>
+          {/* <Li>
             <Link href="/contact-us">
               <a>Contact Us</a>
             </Link>
-          </Li>
+          </Li> */}
         </ul>
-      </div>
-      <div>
+        <div>
         <button className = ' bg-white text-[#2131C2] px-3 py-2 rounded-sm font-normal text-sm md:text-md lg:text-lg'>
           <Link href="/post ">
             <a>Post Hostel</a>
           </Link>
         </button>
-      </div>  
+      </div> 
+      </div>
+       
     </Nav>
   )
 }

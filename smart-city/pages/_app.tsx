@@ -1,5 +1,5 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import '../styles/globals.css'
+import '../styles/globals.css';
 
 interface Props{
   Component: React.ComponentType

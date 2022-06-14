@@ -37,11 +37,6 @@ export const FooterDiv = styled.footer`
 
 `
 
-// <header className='text-center md:w-[75%] lg:w-[60%] xl:w-[50%] m-auto'>
-//   <h1 className='font-bold text-lg sm:text-xl md:text-2xl xl:text-3xl tracking-wide'>Our Goals, Objectives and Values</h1>
-//   <p className='my-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-// </header>
-
 export const Article = styled.article`
    text-align: center;
    margin: 0 auto;
@@ -74,11 +69,3 @@ export const H1 = styled.h1`
       line-height: 2.25rem; 
     };
 `
-
-
-
-// "xs": "310px",
-// "sm": "640px",
-// "md": "768px",
-// "lg": "1024px",
-// "xl": "1280px",
