@@ -14,7 +14,7 @@ const Roommates:React.FC = () => {
 
   return(
     <Layout footer>
-    <div>
+    <>
       <section className='hero_section  relative'>
         <HeroSection>
           <div className=' absolute left-[50%] top-[50%] md:top-[40%] xl:top-[45%] transform translate-x-[-50%] translate-y-[-50%] w-[100%] text-center text-white'>
@@ -177,7 +177,7 @@ const Roommates:React.FC = () => {
          </div>
       </section>
 }
-    </div>
+    </>
   </Layout>
   )
 }
