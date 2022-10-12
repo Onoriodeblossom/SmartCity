@@ -1,6 +1,7 @@
 <?php
-    include ("../../includes/conn.php");
-    include ("../../classes/autoloader.php");
+   ini_set("display_errors", 1);
+   include ("../../model/conn.php");
+   include ("../../controller/apartments.class.php");
     use SmatCity\Roomie;
 
    header('Access-Control-Origin: *');

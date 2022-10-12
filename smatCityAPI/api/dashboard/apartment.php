@@ -185,21 +185,131 @@
         $tiled = $data['tiled'];
         $house_type = $data['house_type'];
         $compound_type = $data['compound_type'];
-        $sql = "insert Into apartments(user_id, title, initial_fee, subsequent_fee, country, state, city, community, street, address, tiled, house_type, compound_type, updated_at) values ('$user_id','$title','$initial_fee','$subsequent_fee','$country', '$state','$city','$community','$street','$address','$tiled','$house_type','$compound_type', NOW())";
-        $run = mysqli_query($con, $sql);
-        echo json_encode([
-            "message"=> $user_id
-         ]);
-        if ($run) {
-            http_response_code(200);
+        //adding image and video upload functionality
+        $r_img = time()."_".$_FILES['room_img']['name'];
+        $r_tmp_img = $_FILES['room_img']['tmp_name'];
+        $k_img = time()."_".$_FILES['kitchen_img']['name'];
+        $k_tmp_img = $_FILES['kitchen_img']['tmp_name'];
+        $t_img = time()."_".$_FILES['toilet_img']['name'];
+        $t_tmp_img = $_FILES['toilet_img']['tmp_name'];
+        $b_img = time()."_".$_FILES['bathroom_img']['name'];
+        $b_tmp_img = $_FILES['bathroom_img']['tmp_name'];
+        $c_img = time()."_".$_FILES['compound_img']['name'];
+        $c_tmp_img = $_FILES['compound_img']['tmp_name'];
+        $h_vid = time()."_".$_FILES['house_vid']['name'];
+        $h_tmp_vid = $_FILES['house_vid']['tmp_name'];
+        
+        
+        $extention1 = pathinfo($_FILES["room_img"]["name"], PATHINFO_EXTENSION);
+        $extention2 = pathinfo($_FILES["kitchen_img"]["name"], PATHINFO_EXTENSION);
+        $extention3 = pathinfo($_FILES["toilet_img"]["name"], PATHINFO_EXTENSION);
+        $extention4 = pathinfo($_FILES["bathroom_img"]["name"], PATHINFO_EXTENSION);
+        $extention5 = pathinfo($_FILES["compound_img"]["name"], PATHINFO_EXTENSION);
+        $extention6 = pathinfo($_FILES['house_vid']["name"], PATHINFO_EXTENSION);
+
+        if (!in_array(strtolower($extention1), ['png', 'jpeg', 'jpg', 'svg']) ) {
             echo json_encode([
-                "message"=> "Posted"
+                "message"=> "File is not an image"
              ]);
-        }else{
-            http_response_code(500);
+        }
+        if (!in_array(strtolower($extention2), ['png', 'jpeg', 'jpg', 'svg']) ) {
             echo json_encode([
-                "message"=> "Error"
+                "message"=> "File is not an image"
              ]);
+        }
+        if (!in_array(strtolower($extention3), ['png', 'jpeg', 'jpg', 'svg']) ) {
+            echo json_encode([
+                "message"=> "File is not an image"
+             ]);
+        }
+        if (!in_array(strtolower($extention4), ['png', 'jpeg', 'jpg', 'svg']) ) {
+            echo json_encode([
+                "message"=> "File is not an image"
+             ]);
+        }
+        if (!in_array(strtolower($extention5), ['png', 'jpeg', 'jpg', 'svg']) ) {
+            echo json_encode([
+                "message"=> "File is not an image"
+             ]);
+        }
+        if (!in_array(strtolower($extention6), ['mp4', 'gif']) ) {
+            echo json_encode([
+                "message"=> "File is not a video"
+             ]);
+        }
+        if (empty($country)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($city)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($state)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($community)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($street)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($address)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($house_type)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($title)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($initial_fee)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($subsequent_fee)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+         if (in_array(strtolower($extention1), ['png', 'jpeg', 'jpg', 'svg']) AND in_array(strtolower($extention2), ['png', 'jpeg', 'jpg', 'svg']) AND in_array(strtolower($extention3), ['png', 'jpeg', 'jpg', 'svg']) AND in_array(strtolower($extention4), ['png', 'jpeg', 'jpg', 'svg']) AND in_array(strtolower($extention5), ['png', 'jpeg', 'jpg', 'svg']) AND in_array(strtolower($extention6), ['mp4', 'gif']) AND !empty($initial_fee) AND !empty($subsequent_fee) AND !empty($country) AND !empty($city) AND !empty($state) AND !empty($community) AND !empty($street) AND !empty($address) AND !empty($house_type) AND !empty($title)) {
+            move_uploaded_file($r_tmp_img, "uploads/$r_img");
+            move_uploaded_file($k_tmp_img, "uploads/$k_img");
+            move_uploaded_file($t_tmp_img, "uploads/$t_img");
+            move_uploaded_file($b_tmp_img, "uploads/$b_img");
+            move_uploaded_file($c_tmp_img, "uploads/$c_img");
+            move_uploaded_file($h_tmp_vid, "uploads/$h_vid");
+            $sql = "insert Into apartments(user_id, title, initial_fee, subsequent_fee, country, state, city, community, street, address, tiled, house_type, compound_type, kitchen_img, toilet_img, bathroom_img, room_img, compound_img, house_video, updated_at) values ('$user_id','$title','$initial_fee','$subsequent_fee','$country', '$state','$city','$community','$street','$address','$tiled','$house_type','$compound_type','$k_img','$t_img','$b_img','$r_img','$c_img','$h_vid',NOW())";
+            $run = mysqli_query($con, $sql);
+            echo json_encode([
+                "message"=> $user_id
+             ]);
+            if ($run) {
+                http_response_code(200);
+                echo json_encode([
+                    "message"=> "Posted"
+                 ]);
+            }else{
+                http_response_code(500);
+                echo json_encode([
+                    "message"=> "Error"
+                 ]);
+            }
         }
     }
 ?>

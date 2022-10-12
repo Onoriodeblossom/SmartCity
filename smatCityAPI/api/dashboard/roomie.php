@@ -8,7 +8,7 @@
     header('Access-Control-Origin: *');
     header("Content-type: application/json; charset=utf-8");
     header('Access-control-Allow-Method: GET, POST, PATCH, DELETE');
-    header('Access-control-Allow-Headers:  Content-Type, Action, Authorization, X-Requested-With'); 
+    header('Access-control-Allow-Headers: Access-control-Allow-Headers,  Content-Type, Action, Authorization, X-Requested-With'); 
 
     $parts = explode("/" , $_SERVER['REQUEST_URI']);
     $id =  $parts['5']?? NULL;
@@ -157,21 +157,77 @@
         $address = $data['address'];
         $house_type = $data['house_type'];
         $gender = $data['gender'];
-        $sql = "insert Into Roomie(user_id, house_type, country, state, city, community, street, address, gender, updated_at) values ('$user_id','$house_type','$country', '$state','$city','$community','$street','$address', '$gender', NOW())";
-        $run = mysqli_query($con, $sql);
-        echo json_encode([
-            "message"=> $user_id
-         ]);
-        if ($run) {
-            http_response_code(200);
+        $img = time()."_".$_FILES['room_img']['name'];
+        $tmp_img = $_FILES['room_img']['tmp_name'];
+        
+        
+        $extention = pathinfo($_FILES["room_img"]["name"], PATHINFO_EXTENSION);
+
+        if (!in_array(strtolower($extention), ['png', 'jpeg', 'jpg', 'svg']) ) {
             echo json_encode([
-                "message"=> "Posted"
-             ]);
-        }else{
-            http_response_code(500);
-            echo json_encode([
-                "message"=> "Error"
+                "message"=> "File is not an image",
+                "name"=> $_FILES["room_img"]["name"]
              ]);
         }
+        if (empty($country)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($city)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($state)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($community)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($street)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($address)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($house_type)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (empty($gender)) {
+            echo json_encode([
+                "message"=> "Field is required"
+             ]);
+        }
+        if (in_array(strtolower($extention), ['png', 'jpeg', 'jpg', 'svg']) AND !empty($country) AND !empty($city) AND !empty($state) AND !empty($community) AND !empty($street) AND !empty($address) AND !empty($house_type) AND !empty($gender)) {
+            move_uploaded_file($tmp_img, "uploads/$img");
+            $sql = "insert Into Roomie(user_id, house_type, country, state, city, community, street, address, room_img, gender, updated_at) values ('$user_id','$house_type','$country', '$state','$city','$community','$street','$address', '$img', '$gender', NOW())";
+            $run = mysqli_query($con, $sql);
+            echo json_encode([
+                "message"=> $user_id
+             ]);
+            if ($run) {
+                http_response_code(200);
+                echo json_encode([
+                    "message"=> "Posted"
+                 ]);
+            }else{
+                http_response_code(500);
+                echo json_encode([
+                    "message"=> "Error"
+                 ]);
+            }
+        }
+       
     }
 ?>
