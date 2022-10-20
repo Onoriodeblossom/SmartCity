@@ -1,10 +1,13 @@
 <?php
-    include ("../../includes/conn.php");
-    include ("../../classes/autoloader.php");
-    
-    header('Access-Control-Origin: *');
-    header('Access-control-Allow-Method: GET, POST');
-    header('Access-control-Allow-Headers: X-Requested-With');
+   ini_set("display_errors", 1);
+   include ("../../model/conn.php");
+   include ("../../controller/apartments.class.php");
+    use SmatCity\Roomie;
+
+   header('Access-Control-Origin: *');
+    header("Content-type: application/json; charset=utf-8");
+    header('Access-control-Allow-Method: GET');
+    header('Access-control-Allow-Headers:  Content-Type, Action, Authorization, X-Requested-With'); 
 
     //intantiate class
     $users = new Roomie($con);

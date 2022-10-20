@@ -76,17 +76,17 @@ const About = () => {
             </Article>
             <div className='box mt-[2em] lg:mt-[6em]  mb-[3em] flex items-center justify-between flex-wrap'>
               <Box
-                src= 'Assets/homesample.png'
+                src= 'Assets/seo.png'
                 title='Fast'
                 details='Search for your dream hostel bby location by campus.You have the freedom to search for different hostels available on the platform'
               />
               <Box
-                src= 'Assets/homesample.png'
+                src= 'Assets/savings.png'
                 title='Easy'
                 details='Search for your dream hostel bby location by campus.You have the freedom to search for different hostels available on the platform'
               />
               <Box
-                src= 'Assets/homesample.png'
+                src= 'Assets/debit-card.png'
                 title='Reliable'
                 details='Search for your dream hostel bby location by campus.You have the freedom to search for different hostels available on the platform'
               />
@@ -137,17 +137,17 @@ const About = () => {
             </Article>
             <div className='box mt-[2em] lg:mt-[6em] mb-[3em] flex items-center justify-between flex-wrap'>
               <Box
-                src= 'Assets/homesample.png'
+                src= 'Assets/seo.png'
                 title='Search for a hostel'
                 details='Search for your dream hostel bby location by campus.You have the freedom to search for different hostels available on the platform'
               />
               <Box
-                src= 'Assets/homesample.png'
+                src= 'Assets/savings.png'
                 title='Pick your choice of Hostel'
                 details='Search for your dream hostel bby location by campus.You have the freedom to search for different hostels available on the platform'
               />
               <Box
-                src= 'Assets/homesample.png'
+                src= 'Assets/debit-card.png'
                 title='Pick your choice of Hostel'
                 details='Search for your dream hostel bby location by campus.You have the freedom to search for different hostels available on the platform'
               />

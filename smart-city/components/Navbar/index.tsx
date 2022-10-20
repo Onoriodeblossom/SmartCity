@@ -45,6 +45,11 @@ const NavBar:React.FC = () => {
               <a>Room mates</a>
             </Link>
           </Li>
+          <Li className = {route('/contact')}>
+            <Link href="/contact">
+              <a>Contact Us</a>
+            </Link>
+          </Li>
           {/* <Li>
             <Link href="/contact-us">
               <a>Contact Us</a>
