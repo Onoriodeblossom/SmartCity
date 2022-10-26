@@ -88,6 +88,15 @@ const LoginPage:React.FC<Props> = ({siteTitle}) => {
                  <div className="button text-center my-10 lg:my-14">
                    <button className='bg-[#2131C2] text-white font-medium text-md py-[0.5em] px-[5em] rounded-md hover:bg-blue-800' type='submit'> {loading? <CircularProgress 
                    size={20} color = "inherit" />: 'Sign in' }</button>
+                                    <div className="next flex flex-wrap xs:flex-nowrap mt-7 items-center justify-center text-center">
+                                      <div>
+                                        Dont have an account?
+                                      </div>
+                      <div className="forgot_password w-full xs:w-fit mt-3 xs:mt-0">
+                      <a className='text-[#2131C2] font-sans hover:underline m-2 hover:text-blue-700' href="#">SignUp</a>
+                    </div>
+
+                                    </div>
                  </div>
               </form>
             </div>

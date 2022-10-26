@@ -50,7 +50,7 @@ const MobileNavbar = () => {
               </Link>
             </li>
             <li className='my-3 text-white text-lg'>  
-              <Link href="/hostel">
+              <Link href="/about">
                 <a>Hostels</a>
               </Link>
             </li>
