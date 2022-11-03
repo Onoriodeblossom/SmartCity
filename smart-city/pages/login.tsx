@@ -18,23 +18,20 @@ interface Props {
 const LoginPage: React.FC<Props> = ({ siteTitle }) => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  // const [data,setData] = useState()
+  const [message,setMessage] = useState()
   const [email, setEmail] =useState("")
-  // const [email, setEmail] = useState("");
+  const [data, setData] = useState("");
   const [password, setPassword] = useState("");
 
-  const data ={email,password}
-
-  const submit = () =>{
-    console.log(email)
-  }
   
-  const handleSubmit = event => {
-
-    console.log(data);
+  const handleSubmit = (event) =>{
     event.preventDefault();
+    console.log("yes")
     setLoading(true);
   }
+
+  
+ 
 
   return (
     <div>
@@ -57,7 +54,7 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
                 </p>
               </header>
 
-              <form onSubmit={submit} className="mt-5">
+              <form onSubmit={handleSubmit} className="mt-5">
                 {/* <ErrorMessage message = 'Incorrect email or password. try again!'/> */}
                 <div className="email mb-3 mt-4">
                   <label
@@ -71,8 +68,8 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
                     className="outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm "
                     type="email"
                     value={email}
-                    onChange={event => setEmail(event.target.email)} 
-                    // onChange={changeHandler}
+                    onChange={event=> setEmail(event.target.value)} 
+                    
                     placeholder="Enter your email address"
                     autoComplete="off"
                     required
@@ -92,8 +89,9 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
                       autoComplete="off"
-                      value={password}
-                      onChange={event => setPassword(event.target.password)} 
+                      value={password} 
+                      onChange={event=> setPassword(event.target.value)} 
+                                        
                       // onChange={changeHandler}
                       required
                     />
@@ -135,7 +133,7 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
                   <button
                     className="bg-[#2131C2] text-white font-medium text-md py-[0.5em] px-[5em] rounded-md hover:bg-blue-800"
                     // type="submit"
-                    onClick={submit}
+                    onClick={()=>handleSubmit}
                   >
                     {" "}
                     {loading ? (
