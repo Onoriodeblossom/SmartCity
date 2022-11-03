@@ -21,4 +21,37 @@ a {
   -webkit-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
+  //outline: 1px solid black;
+}
+
+th {
+  color: #9fa2b4;
+}
+
+td {
+  border-top: 1px solid #dfe0eb;
+  border-bottom: 1px solid #dfe0eb;
+  text-align: left;
+}
+
+td {
+  padding: 0.5rem;
+  width: fit-content;
+}
+
+table {
+  margin-top: 1rem;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  table-layout: auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  table {
+    display: block;
+    width: 100%;
+    min-width: 670px;
+    white-space: nowrap;
+  }
 }
