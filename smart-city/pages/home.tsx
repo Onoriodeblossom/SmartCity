@@ -7,7 +7,7 @@ import HeroOption from "../components/view/HeroOption";
 import LoginPage from "./login";
 
 
- const Home:React.FC = () => {
+ const Homes:React.FC = () => {
   return (
 
     <div>
@@ -132,4 +132,4 @@ import LoginPage from "./login";
   )
 }
 
-export default Home;
+export default Homes;
