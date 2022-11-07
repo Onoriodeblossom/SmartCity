@@ -26,7 +26,7 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
   
   const handleSubmit = (event) =>{
     event.preventDefault();
-    console.log("yes")
+    console.log(email,password)
     setLoading(true);
   }
 
