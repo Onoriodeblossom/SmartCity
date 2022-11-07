@@ -12,7 +12,7 @@ import { Article, H1 } from "../components/styles";
 import HostelCard from "../components/hostelCard/hotelCard";
 
 
-const Hostel  = () =>{
+const Hostel3  = () =>{
     // const [becomeContact, setBecomeContant] = useState(false);
     return(
         <div>
@@ -83,4 +83,4 @@ const Hostel  = () =>{
     )
 }
 
-export default Hostel;
+export default Hostel3;
