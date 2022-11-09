@@ -1,17 +1,16 @@
 import React, {useState} from "react";
 import { Provider } from "react-redux";
 import LoginPage from "./login";
-import store from "./store/store"
-import Homes from "./home"
+import store from "./store/store";
+import HostelDetails from "./hostelDetails";
 
 
  const Home = () => {
   return (
     <Provider store={store}>
-      <Homes/>
+      <HostelDetails />
     </Provider>
-    
-  )
+  );
 }
 
 export default Home;
