@@ -3,7 +3,7 @@ import {Amount, CardTitle, Container, Dot, Flex, List, Section,Text} from "./sty
 import Image from "next/image"
 
 
- const HostelCard = () =>{
+ const LodgeCard = () =>{
     return(
         <Container>
             <Image
@@ -11,7 +11,7 @@ import Image from "next/image"
               alt="vid"
               width={340}
               height={200}
-              quality={100}
+            //   quality={100}
             />
             <Section>
             <CardTitle>Tiled Self contained Room</CardTitle>
@@ -35,37 +35,22 @@ import Image from "next/image"
                     <Text color="#333">Light</Text>
 
                 </List>
-                <List>
-                    <Dot/>
-                    <Text color="#333">Light</Text>
-
-                </List>
+               
                 </Flex>
                     
                 
                 
             </Section>
-            <Section>
+            {/* <Section>
                 <Flex>
                     
-                <Flex width="50%">
-
-
-                <Amount>N2,000</Amount>
-                <Text>Yearly</Text>
+             
+            
                 </Flex>
-                <button
-             className="bg-gradient-to-r from-[#101861] to-[#2131C2] rounded-sm text-sm lg:text-md py-2 px-4 text-white
-             w-[100px] hover:bg-blue-500 hover:text-white" 
-            >
-              inspect
-            </button>
-                </Flex>
-            </Section>
+            </Section> */}
         </Container>
     
     )
 }
 
-export default HostelCard;
-
+export default LodgeCard;

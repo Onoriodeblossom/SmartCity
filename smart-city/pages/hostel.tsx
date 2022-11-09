@@ -10,9 +10,42 @@ import { Checkbox } from "@mui/material";
 import HeroOption from "../components/view/HeroOption";
 import { Article, H1 } from "../components/styles";
 import HostelCard from "../components/hostelCard/hotelCard";
+import { Flex } from "../components/hostelCard/styles";
+import LodgeCard from "../components/lodgeCard/lodgeCard";
 
 
 const Hostel  = () =>{
+
+
+  const hostel = [
+    {
+      image:"/Assets/Agent.png"
+    },
+    {
+      image:"/Assets/Agent.png"
+    },
+    {
+      image:"/Assets/Agent.png"
+    },
+    {
+      image:"/Assets/Agent.png"
+    },
+    {
+      image:"/Assets/Agent.png"
+    },
+    {
+      image:"/Assets/Agent.png"
+    },
+    {
+      image:"/Assets/Agent.png"
+    },
+    {
+      image:"/Assets/Agent.png"
+    },
+    {
+      image:"/Assets/Agent.png"
+    },
+  ] 
     // const [becomeContact, setBecomeContant] = useState(false);
     return(
         <div>
@@ -74,7 +107,42 @@ const Hostel  = () =>{
           <Article>
               <H1>Explore Our Hostels by Rooms Types</H1>
             </Article>
-            <HostelCard/>
+            <Flex >
+
+            {
+            hostel.map((image)=>(
+
+
+              <HostelCard/>
+            ))}
+          
+            </Flex>
+
+         
+         
+        </section>
+        <section
+         className="py-[3em] px-[2em] lg:px-[3em] lg:py-[4em]"
+        >
+        <Article>
+              <H1>Explore Our Hostels By Location</H1>
+            </Article>
+            <Flex>
+              
+
+            {
+              hostel.map((image)=>(
+
+                <LodgeCard/>
+              ))
+            }
+            </Flex>
+
+        </section>
+        <section
+         className="py-[3em] px-[2em] lg:px-[3em] lg:py-[4em]"
+        >
+          
         </section>
           </Layout> 
         </main>

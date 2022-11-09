@@ -123,9 +123,10 @@ import LoginPage from "./login";
             </button>
           </div>
         </div>
-
-
       </section>
+   
+   
+
         </Layout> 
       </main>
     </div>

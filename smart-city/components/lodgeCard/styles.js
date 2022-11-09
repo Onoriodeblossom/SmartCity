@@ -9,13 +9,11 @@ width:23%;
 justify-content:center;
 align-items:center;
 display:flex;
-padding-bottom:10px;
+padding-bottom:20px;
 border-radius: 20px;
 flex-direction:column;
-box-shadow: 0.3px -5px 10px 0.6px rgba(0, 0, 0, 0.2);
-background-color:white;
-margin-top:10px;
-margin-bottom:10px;
+/* box-shadow: 0.3px -5px 10px 0.6px rgba(0, 0, 0, 0.2); */
+/* background-color:white; */
 
 `
 
