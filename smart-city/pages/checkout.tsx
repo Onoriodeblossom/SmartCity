@@ -17,8 +17,9 @@ import TestimonialCard from "../components/testimonialCard/testimonialCard.compo
 import ReviewSection from "../components/reviewSection/reviewSection.component";
 import ScrollingDiv from "../components/Carousel/index";
 import HostelInfo from "../components/HostelInfo/HostelInfo.component";
+import FormSection from "../components/formSection/formSection.component";
 
-const HostelDetails = () => {
+const Checkout = () => {
   // const [becomeContact, setBecomeContant] = useState(false);
   const ImageTextCardData = [
     { cardText: "hello this" },
@@ -120,10 +121,23 @@ const HostelDetails = () => {
           </section>
           {/* <div className=" h-[90px] lg:h-[120px]  bg-[#E5E5E5]"></div> */}
           <FlexibleDiv flexDirection="column" boxedLayout>
-            <SectionHeader text="Perculiar Hostels" />
+            <SectionHeader text="Pay #2000 to unlock 1  hostel location pay #10,000 to unlock 6 different locations" />
             <FlexibleDiv>
-              <ImageCard icon />
-              <PriceCard />
+              <ImageCard icon width="55%" resWidth="50%" />
+              <FlexibleDiv width="40%">
+                <ImageCard
+                  height={"32vh"}
+                  width="100%"
+                  resWidth="100%"
+                  resHeight="24vh"
+                />
+                <ImageCard
+                  height={"32vh"}
+                  width="100%"
+                  resWidth="100%"
+                  resHeight="24vh"
+                />
+              </FlexibleDiv>
             </FlexibleDiv>
           </FlexibleDiv>
 
@@ -132,19 +146,10 @@ const HostelDetails = () => {
             boxedLayout
             paddingVertical="5rem"
           >
-            <ScrollingDiv
-              scrollCardBg="transparent"
-              scrollOuterBg="transparent"
-              scrollCardGaps="0 1rem"
-            >
-              {ImageTextCardData.map(({ cardText }) => (
-                <ImageTextCard />
-              ))}
-            </ScrollingDiv>
-            <HostelInfo />
+            <FormSection />
           </FlexibleDiv>
 
-          <FlexibleDiv flexDirection="column" boxedLayout>
+          {/* <FlexibleDiv flexDirection="column" boxedLayout>
             <SectionHeader text="What people have to say about the hostels" />
             <FlexibleDiv resFlexDirection="row">
               {testimonialData.map(({ name, testimonial, image }) => (
@@ -155,7 +160,7 @@ const HostelDetails = () => {
                 />
               ))}
             </FlexibleDiv>
-          </FlexibleDiv>
+          </FlexibleDiv> */}
 
           <FlexibleDiv
             flexDirection="column"
@@ -165,14 +170,14 @@ const HostelDetails = () => {
             <ReviewSection />
           </FlexibleDiv>
 
-          <FlexibleDiv flexDirection="column" boxedLayout>
+          {/* <FlexibleDiv flexDirection="column" boxedLayout>
             <SectionHeader text="Recommended Hostels" />
             <FlexibleDiv></FlexibleDiv>
-          </FlexibleDiv>
+          </FlexibleDiv> */}
         </Layout>
       </main>
     </div>
   );
 };
 
-export default HostelDetails;
+export default Checkout;

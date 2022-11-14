@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FlexibleDiv } from "../flexibleDiv/flexibleDiv.component";
 
-export const InputSectionWrapper = styled(FlexibleDiv)`
+export const ReviewSectionWrapper = styled(FlexibleDiv)`
   padding: 1rem 1.6rem;
   align-items: flex-start;
   border-radius: 10px;

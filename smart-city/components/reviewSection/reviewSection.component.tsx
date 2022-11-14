@@ -1,15 +1,15 @@
 import React from "react";
 import {
-  InputSectionWrapper,
+  ReviewSectionWrapper,
   HeaderText,
   FormWrapper,
   Wrapper,
   ButtonWrapper,
-} from "./inputSection.styles";
+} from "./reviewSection.styles";
 import {Button} from "../button/button.component"
 import { TextArea } from "../textArea/textArea.component";
 
-const InputSection = ({
+const ReviewSection = ({
   text,
   color,
   fontSize,
@@ -17,7 +17,7 @@ const InputSection = ({
   
 }) => {
   return (
-    <InputSectionWrapper flexDirection="column" paddingVertical="2.5rem">
+    <ReviewSectionWrapper flexDirection="column" paddingVertical="2.5rem">
       <HeaderText>have a question or drop a review</HeaderText>
 
       <FormWrapper>
@@ -28,8 +28,8 @@ const InputSection = ({
           <Button btnText="Post" />
         </ButtonWrapper>
       </FormWrapper>
-    </InputSectionWrapper>
+    </ReviewSectionWrapper>
   );
 };
 
-export default InputSection;
+export default ReviewSection;
