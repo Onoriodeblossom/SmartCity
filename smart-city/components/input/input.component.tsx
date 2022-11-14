@@ -5,10 +5,15 @@ import { FlexibleDiv } from "../flexibleDiv/flexibleDiv.component";
 const Wrapper = styled(FlexibleDiv)`
   position: relative;
   flex-direction: column;
+  width: ${({ width }) => (width ? width : `100%`)};
   justify-content: center;
   align-items: flex-start;
   height: max-content;
-  margin-bottom:1.2rem;
+  margin-bottom: 1.2rem;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
 `;
 
 const InnerLabel = styled.label`
@@ -100,7 +105,7 @@ export const Input = ({
   ...props
 }) => {
   return (
-    <Wrapper paddingVertical="0">
+    <Wrapper paddingVertical="0" width={width}>
       {value === "" ? (
         label ? (
           <>
@@ -133,7 +138,7 @@ export const Input = ({
         value={value}
         min={min}
         max={max}
-        width={width}
+        // width={width}
         padding={padding}
         style={style}
       />

@@ -202,3 +202,9 @@ export const CardWrapper = styled(FlexibleDiv)`
     flex-direction:row;
   }
 `;
+export const PairedInputContainer = styled(FlexibleDiv)`
+  padding: 0;
+  /* @media (max-width: 800px) {
+    width: 100%;
+  } */
+`;

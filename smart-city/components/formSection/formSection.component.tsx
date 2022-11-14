@@ -18,8 +18,7 @@ import {
   ButtonWrapper,
   SelectPaymentHeaderText,
   CardWrapper,
-  Card,
-  CardText,
+  PairedInputContainer,
 } from "./formSection.styles";
 import { Button } from "../button/button.component";
 import { TextArea } from "../textArea/textArea.component";
@@ -121,9 +120,9 @@ const FormSection = ({ text, color, fontSize, textAlign }) => {
         </SelectPaymentHeaderText>
 
         <CardWrapper>
-        <TransactionCard active creditCard cardText="Credit Card" />
-        <TransactionCard paypal cardText="Transfer" />
-        <TransactionCard wallet cardText="Cash" />
+          <TransactionCard active creditCard cardText="Credit Card" />
+          <TransactionCard paypal cardText="Transfer" />
+          <TransactionCard wallet cardText="Cash" />
         </CardWrapper>
         <FormWrapper>
           <FormHeaderWrapper>
@@ -148,24 +147,28 @@ const FormSection = ({ text, color, fontSize, textAlign }) => {
               // onChange={}
               // value={}
             />
-            <Input
-              type={"password"}
-              placeholder={"3355"}
-              label={"CVV"}
-              // error={}
-              // name={}
-              // onChange={}
-              // value={}
-            />
-            <Input
-              type={"text"}
-              placeholder={"MM/YY"}
-              label={"Exp Date"}
-              // error={}
-              // name={}
-              // onChange={}
-              // value={}
-            />
+            <PairedInputContainer>
+              <Input
+                type={"password"}
+                placeholder={"3355"}
+                label={"CVV"}
+                width={"47%"}
+                // error={}
+                // name={}
+                // onChange={}
+                // value={}
+              />
+              <Input
+                type={"text"}
+                placeholder={"MM/YY"}
+                label={"Exp Date"}
+                width={"47%"}
+                // error={}
+                // name={}
+                // onChange={}
+                // value={}
+              />
+            </PairedInputContainer>
           </FormInputWrappers>
           <ButtonWrapper>
             <Button
