@@ -5,9 +5,9 @@ import { ImageCardWrapper, IconContainer } from "./imageCard.styles";
 import CardBg from "../../public/Assets/cardBg.png";
 import { FiPlayCircle as PlayIcon } from "react-icons/fi";
 
-const ImageCard = () => {
+const ImageCard = ({icon,width,height,resWidth,resHeight}) => {
   return (
-    <ImageCardWrapper background="blue">
+    <ImageCardWrapper background="blue" width={width} height={height} resWidth={resWidth} resHeight={resHeight}>
       <Image
         src={CardBg}
         alt="cardImage"
@@ -17,9 +17,9 @@ const ImageCard = () => {
         layout="fill"
 
       />
-      <IconContainer>
+      {icon?<IconContainer>
         <PlayIcon color="#fff" size="5rem" />
-      </IconContainer>
+      </IconContainer>:null}
     </ImageCardWrapper>
   );
 };

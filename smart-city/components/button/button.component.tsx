@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const ButtonStyles = styled.button`
   cursor: pointer;
-  width: auto;
+  width: ${({ btnWidth }) => (btnWidth ? btnWidth : "auto")};
+  min-width: ${({ btnMinWidth }) => (btnMinWidth ? btnMinWidth : "auto")};
   background: ${({ background }) =>
     background
       ? background
@@ -41,7 +42,7 @@ export const Button = ({
   RightIcon,
   LeftIcon,
   iconSize,
-  size,
+  size,btnWidth,btnMinWidth,
   disabled,
 }) => {
   return (
@@ -53,6 +54,8 @@ export const Button = ({
       onClick={onClick ? onClick : null}
       size={size}
       disabled={disabled}
+      btnWidth={btnWidth}
+      btnMinWidth={btnMinWidth}
     >
       {LeftIcon ? (
         <LeftIcon
