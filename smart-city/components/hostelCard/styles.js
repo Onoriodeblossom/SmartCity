@@ -5,7 +5,7 @@ import { PropaneSharp } from "@mui/icons-material";
 
 export const Container = styled.div`
 height:max-content;
-width:23%;
+width:270px;
 justify-content:center;
 align-items:center;
 display:flex;

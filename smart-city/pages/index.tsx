@@ -3,12 +3,13 @@ import { Provider } from "react-redux";
 import LoginPage from "./login";
 import store from "./store/store";
 import HostelDetails from "./hostelDetails";
+import Homes from "./home";
 
 
  const Home = () => {
   return (
     <Provider store={store}>
-      <HostelDetails />
+      <Homes />
     </Provider>
   );
 }

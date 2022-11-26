@@ -9,8 +9,8 @@ import Image from "next/image"
             <Image
               src={'/Assets/Agent.png'}
               alt="vid"
-              width={340}
-              height={200}
+              width={270}
+              height={150}
               quality={100}
             />
             <Section>
