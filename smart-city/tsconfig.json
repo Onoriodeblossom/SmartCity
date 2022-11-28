@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/Carousel/index.jsx", "components/input/input.component.jsx", "components/priceCard/priceCard.component.jsx", "components/reviewSection/reviewSection.component.jsx", "components/formSection/transactionCard/transactionCard.component.jsx", "components/formSection/formSection.component.jsx", "components/HostelInfo/HostelInfo.component.jsx"  ],
+, "components/Carousel/index.jsx", "pages/hostelDetails.jsx", "pages/checkout.jsx", "components/flexibleDiv/flexibleDiv.component.jsx", "components/input/input.component.jsx", "components/priceCard/priceCard.component.jsx", "components/reviewSection/reviewSection.component.jsx", "components/formSection/transactionCard/transactionCard.component.jsx", "components/formSection/formSection.component.jsx", "components/HostelInfo/HostelInfo.component.jsx"  ],
   "exclude": [
     "node_modules"
   ]
