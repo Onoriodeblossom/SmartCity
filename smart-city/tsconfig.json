@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "components/Carousel/index.jsx", "components/HostelInfo/HostelInfo.component.jsx"  ],
+, "components/Carousel/index.jsx", "components/formSection/transactionCard/transactionCard.component.jsx", "components/formSection/formSection.component.jsx", "components/HostelInfo/HostelInfo.component.jsx"  ],
   "exclude": [
     "node_modules"
   ]
