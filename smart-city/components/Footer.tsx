@@ -2,6 +2,7 @@ import Link from "next/link";
 import Logo from "./Logo";
 import { FooterDiv } from './styles'
 
+
 const Footer:React.FC = () =>{
    return(
     <FooterDiv>
@@ -12,16 +13,16 @@ const Footer:React.FC = () =>{
           />
           <div className="socials flex items-center  mt-5">
             <a href="#" title="Linkedln ">
-              <img className="mr-5 w-[17px]" src="Assets/Linkedln.png" alt="linkedin" />
+              {/* <img className="mr-5 w-[17px]" src="Assets/Linkedln.png" alt="linkedin" /> */}
             </a>
             <a href="#" title="Twitter">
-              <img  className="mr-5 w-[18px]" src="Assets/Twitter.png" alt="twitter" />
+              {/* <img  className="mr-5 w-[18px]" src="Assets/Twitter.png" alt="twitter" /> */}
             </a>
             <a href="#" title="Facebook">
-              <img className="mr-5 w-[10px]" src="Assets/Facebook.png" alt="facebook" />
+              {/* <img className="mr-5 w-[10px]" src="Assets/Facebook.png" alt="facebook" /> */}
             </a>
             <a href="#" title="Instagram">
-              <img className="mr-5 w-[16px]" src="Assets/Instagram.png" alt="instagram" />
+              {/* <img className="mr-5 w-[16px]" src="Assets/Instagram.png" alt="instagram" /> */}
             </a> 
           </div>
         </div>
