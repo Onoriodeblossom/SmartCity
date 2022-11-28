@@ -13,11 +13,11 @@ import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined
 import ErrorMessage from "../components/ErrorMessage";
 import { signUpUser } from "./redux/authSlice";
 
-interface Props {
-  siteTitle?: string;
-}
+// interface Props {
+//   siteTitle?: string;
+// }
 
-const Signup: React.FC<Props> = ({ siteTitle }) => {
+const Signup = ({ siteTitle }) => {
   const [loading, setLoading] = useState(false);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
