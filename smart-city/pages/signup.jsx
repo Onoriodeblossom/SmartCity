@@ -53,10 +53,10 @@ const Signup = ({ siteTitle }) => {
 
     console.log("submit");
   };
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const registerHandle = () => {
     console.log(fullName, email, password, confirmPassword);
-    dispatch(signUpUser({ fullName, email, password, comfirmPassword }));
+    // dispatch(signUpUser({ fullName, email, password, comfirmPassword }));
   };
 
   return (

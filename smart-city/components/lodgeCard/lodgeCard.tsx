@@ -11,7 +11,7 @@ import Image from "next/image"
               alt="vid"
               width={340}
               height={200}
-            //   quality={100}
+              quality={100}
             />
             <Section>
             <CardTitle>Tiled Self contained Room</CardTitle>

@@ -9,6 +9,8 @@ width:270;
 justify-content:center;
 align-items:center;
 display:flex;
+padding:0;
+margin:0;
 padding-bottom:20px;
 border-radius: 20px;
 flex-direction:column;

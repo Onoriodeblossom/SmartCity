@@ -1,24 +1,26 @@
 import React, {useState} from "react";
 import Head from 'next/head';
 import Image from 'next/image';
-import Layout from "../components/Layout";
 import HeroSection from "../components/HeroSection";
 import HeroOption from "../components/view/HeroOption";
 import LoginPage from "./login";
+import Footer from "../components/Footer";
+import NavBar2 from "../components/Navbar/navbar";
 
 
- const Homes = () => {
+ const LandingPage = () => {
   return (
 
     <div>
-      <Head>
+      <NavBar2/>
+      {/* <Head>
         <title>Smart-city</title>
         <meta name="description" content="A Smart city project" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head> */}
 
       <main>
-        <Layout footer>
+        {/* <Layout footer> */}
         <section className='hero_section  relative'>
         <HeroSection>
           <div className=' absolute left-[50%] top-[50%] md:top-[40%] xl:top-[45%] transform translate-x-[-50%] translate-y-[-50%] w-[100%] text-center text-white'>
@@ -124,13 +126,14 @@ import LoginPage from "./login";
           </div>
         </div>
       </section>
+      <Footer/>
    
    
 
-        </Layout> 
+        {/* </Layout>  */}
       </main>
     </div>
   )
 }
 
-export default Homes;
+export default LandingPage;
