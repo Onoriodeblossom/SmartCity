@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   FormGroup,
   FormControlLabel,
@@ -10,28 +10,65 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import ErrorMessage from "../components/ErrorMessage";
 import { setEnvironmentData } from "worker_threads";
+import toast from "react-hot-toast";
+import { MainContext } from "./_app";
 
 interface Props {
   siteTitle?: string;
 }
 
 const LoginPage: React.FC<Props> = ({ siteTitle }) => {
+  const CTX = useContext(MainContext);
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [message,setMessage] = useState()
-  const [email, setEmail] =useState("")
-  const [data, setData] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState();
+  const [data, setData] = useState("");
+  const [msg, setMsg] = useState("");
 
-  
-  const handleSubmit = (event) =>{
-    event.preventDefault();
-    console.log(email,password)
+  const OnSubmitFormHandler = (e) => {
+    e.preventDefault();
+    if (loading) return null;
     setLoading(true);
-  }
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+    let TOASTID = toast.loading("Settings up contents");
+    fetch(`${CTX.url}authUser/login.php`, {
+      method: "POST",
+      // mode: "no-cors",
+      // headers: new Headers({ "Content-Type": "application/json" }),
+      body: formData,
+    })
+      .then((res) => res.text())
+      .then((res) => {
+        setLoading(false);
+        if (res.includes("invalide email or password")) {
+          toast.dismiss(TOASTID);
+          toast.error("Login failed. Invalid email or password");
+          return
+        }
 
-  
- 
+        
+
+        console.log("res ====>>>>>");
+        console.log("res ====>>>>>");
+        console.log("res ====>>>>>");
+        console.log("res ====>>>>>");
+        console.log("res.split() ====>>>>>", res.split('":"'));
+        console.log("just res ====>>>>>", res);
+        console.log("res ====>>>>>");
+        console.log("res ====>>>>>");
+        console.log("res ====>>>>>");
+      })
+      .catch((e) => {
+        toast.dismiss(TOASTID);
+        toast.error("Error check your internet connection");
+        setLoading(false);
+        console.log(e);
+      });
+  };
 
   return (
     <div>
@@ -54,7 +91,7 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
                 </p>
               </header>
 
-              <form onSubmit={handleSubmit} className="mt-5">
+              <form onSubmit={OnSubmitFormHandler} className="mt-5">
                 {/* <ErrorMessage message = 'Incorrect email or password. try again!'/> */}
                 <div className="email mb-3 mt-4">
                   <label
@@ -68,8 +105,7 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
                     className="outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm "
                     type="email"
                     value={email}
-                    onChange={event=> setEmail(event.target.value)} 
-                    
+                    onChange={(event) => setEmail(event.target.value)}
                     placeholder="Enter your email address"
                     autoComplete="off"
                     required
@@ -89,9 +125,8 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
                       autoComplete="off"
-                      value={password} 
-                      onChange={event=> setPassword(event.target.value)} 
-                                        
+                      value={password}
+                      onChange={(event) => setPassword(event.target.value)}
                       // onChange={changeHandler}
                       required
                     />
@@ -133,7 +168,7 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
                   <button
                     className="bg-[#2131C2] text-white font-medium text-md py-[0.5em] px-[5em] rounded-md hover:bg-blue-800"
                     // type="submit"
-                    onClick={()=>handleSubmit}
+                    // onClick={()=>handleSubmit}
                   >
                     {" "}
                     {loading ? (

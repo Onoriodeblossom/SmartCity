@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
@@ -12,28 +12,97 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import ErrorMessage from "../components/ErrorMessage";
 import { signUpUser } from "./redux/authSlice";
+import { MainContext } from "./_app";
+import toast from "react-hot-toast";
 
 // interface Props {
 //   siteTitle?: string;
 // }
 
 const Signup = ({ siteTitle }) => {
+  const CTX = useContext(MainContext);
   const [loading, setLoading] = useState(false);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [country, setCountry] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   //const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
 
+  const OnSubmitFormHandler = (e) => {
+    e.preventDefault();
+    if (!acceptTerms) return null;
+    // if (loading) return null;
+    if (password.length < 8) {
+      toast.error("Password must be 8 characters or longer");
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
+    setLoading(true);
+    // const formData = new FormData();
+    // formData.append("email", email);
+    // formData.append("fullname", fullName);
+    // formData.append("password", password);
+    // formData.append("c_password", confirmPassword);
+    let TOASTID = toast.loading("Settings up contents");
+    fetch(`${CTX.url}users/`, {
+      method: "POST",
+      // body: formData,
+      body: JSON.stringify({
+        email: email,
+        fullname: fullName,
+        password: password,
+        c_password: confirmPassword,
+      }),
+    })
+      .then((res) => res.text())
+      .then((res) => {
+        if (res.includes("sign up succ")) {
+          toast.dismiss(TOASTID);
+          toast.success("Sign up successful");
+          window.location.href = "login";
+          return;
+        }
+
+        if (res.includes("email already exist")) {
+          toast.dismiss(TOASTID);
+          toast.error("Email already exist");
+          return
+        }
+
+        console.log("res ====>>>>>");
+        console.log("res ====>>>>>");
+        console.log("res ====>>>>>");
+        console.log("res ====>>>>>");
+        console.log("res ====>>>>>", res);
+        console.log("res ====>>>>>");
+        console.log("res ====>>>>>");
+        console.log("res ====>>>>>");
+        toast.dismiss(TOASTID);
+        toast.error("An error occurred ");
+        setLoading(false);
+      })
+      .catch((e) => {
+        toast.dismiss(TOASTID);
+        toast.error("Error check your internet connection");
+        setLoading(false);
+        console.log(e);
+      });
+  };
+
   const label = () => {
     return (
       <div className="text-sm">
         By creating an account, you confirm that you accept Smart city{" "}
         <a className="text-blue-500 hover:text-blue-700" href="#">
-          Terms and Condition
+          // mode: "no-cors", Terms and Condition
         </a>{" "}
         and{" "}
         <a className="text-blue-500 hover:text-blue-700" href="#">
@@ -83,7 +152,7 @@ const Signup = ({ siteTitle }) => {
               </header>
 
               <form onSubmit={handleSubmit} className="mt-5">
-                <ErrorMessage message="Password must be at least 6 characters long" />
+                <ErrorMessage message="Password must be at least 8 characters long" />
                 <div className="email mb-3 mt-4">
                   <label
                     htmlFor="name"
@@ -96,6 +165,8 @@ const Signup = ({ siteTitle }) => {
                     className="outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm "
                     type="text"
                     placeholder="Enter your full name"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
                     autoComplete="off"
                     required
                   />
@@ -114,8 +185,28 @@ const Signup = ({ siteTitle }) => {
                     placeholder="Enter your email address"
                     autoComplete="off"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
+                {/* <div className="email mb-3 mt-4">
+                  <label
+                    htmlFor="email"
+                    className="text-md text-[#0D1E07]font-normal"
+                  >
+                    Country
+                  </label>
+                  <br />
+                  <input
+                    className="outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm "
+                    type="email"
+                    placeholder="Enter your email address"
+                    autoComplete="off"
+                    required
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                  />
+                </div> */}
                 <div className="password mb-3">
                   <label
                     htmlFor="password"
@@ -131,6 +222,8 @@ const Signup = ({ siteTitle }) => {
                       placeholder="Enter your password"
                       autoComplete="off"
                       required
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -161,6 +254,8 @@ const Signup = ({ siteTitle }) => {
                       type={showConfirmPassword ? "text" : "password"}
                       placeholder="Enter your password"
                       required
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
                     />
                     <span
                       onClick={() =>
@@ -195,8 +290,8 @@ const Signup = ({ siteTitle }) => {
                 </div>
                 <div className="button text-center mt-10 lg:mt-12">
                   <button
-                    disabled={!acceptTerms}
-                    onClick={registerHandle}
+                    // disabled={!acceptTerms}
+                    onClick={OnSubmitFormHandler}
                     className={`bg-[#2131C2] text-white font-medium text-sm  sm:text-md py-[0.5em] px-[5em] rounded-md hover:bg-blue-800 ${
                       !acceptTerms ? "opacity-60 cursor-not-allowed" : ""
                     }`}
