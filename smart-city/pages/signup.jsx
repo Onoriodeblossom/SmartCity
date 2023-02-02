@@ -12,6 +12,9 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import ErrorMessage from "../components/ErrorMessage";
 import { signUpUser } from "./redux/authSlice";
+import { Container } from "./slash2/styles";
+import background from "../public/Assets/background1.png";
+import { Nav } from "./slash2/styles";
 
 // interface Props {
 //   siteTitle?: string;
@@ -20,7 +23,7 @@ import { signUpUser } from "./redux/authSlice";
 const Signup = ({ siteTitle }) => {
   const [loading, setLoading] = useState(false);
   const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   //const [error, setError] = useState('');
@@ -55,12 +58,12 @@ const Signup = ({ siteTitle }) => {
   };
   // const dispatch = useDispatch();
   const registerHandle = () => {
-    console.log(fullName, email, password, confirmPassword);
+    console.log(fullName, userName, password, confirmPassword);
     // dispatch(signUpUser({ fullName, email, password, comfirmPassword }));
   };
 
   return (
-    <div>
+      <Container image={background}  justify="start">
       <Head>
         <title>Smart-city</title>
         <link rel="icon" href="Assets/logo.png" />
@@ -68,7 +71,7 @@ const Signup = ({ siteTitle }) => {
         <title>{siteTitle ? siteTitle : "Smart-city"}</title>
       </Head>
       <main>
-        <div className="md:bg-[url('/Assets/background1.png')] sm:fixed w-full h-full">
+        {/* <div className="md:bg-[url('/Assets/background1.png')] sm:fixed w-full h-full"> */}
           <div className="welcome_div py-9 w-full bg-white  md:w-4/5 lg:w-3/4 xl:w-[60%] sm:absolute left-[50%] top-[50%] sm:transform sm:translate-x-[-50%] sm:translate-y-[-50%]">
             <div className="content w-[90%] md:w-2/3 lg:w-3/5 mx-auto">
               <header className="text-center">
@@ -105,13 +108,13 @@ const Signup = ({ siteTitle }) => {
                     htmlFor="email"
                     className="text-md text-[#0D1E07]font-normal"
                   >
-                    Email Address
+                  UserName
                   </label>
                   <br />
                   <input
                     className="outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm "
-                    type="email"
-                    placeholder="Enter your email address"
+                    type="userName"
+                    placeholder="Enter your Username"
                     autoComplete="off"
                     required
                   />
@@ -219,9 +222,9 @@ const Signup = ({ siteTitle }) => {
               </form>
             </div>
           </div>
-        </div>
+      
       </main>
-    </div>
+    </Container>
   );
 };
 

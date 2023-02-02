@@ -10,6 +10,10 @@ import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import ErrorMessage from "../components/ErrorMessage";
 import { setEnvironmentData } from "worker_threads";
+import {Container } from "./slash2/styles"
+import background from "../public/Assets/background1.png";
+import { Nav } from "./slash2/styles";
+
 
 interface Props {
   siteTitle?: string;
@@ -19,14 +23,14 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [message,setMessage] = useState()
-  const [email, setEmail] =useState("")
+  const [userName, setUserName] =useState("")
   const [data, setData] = useState("");
   const [password, setPassword] = useState("");
 
   
   const handleSubmit = (event) =>{
     event.preventDefault();
-    console.log(email,password)
+    console.log(userName,password)
     setLoading(true);
   }
 
@@ -34,132 +38,132 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
  
 
   return (
-    <div>
+    // <div>
+    <Container image={background} justify="start">
       <Head>
         <title>Smart-city</title>
         <link rel="icon" href="Assets/logo.png" />
         <meta name="smart-city" content="A product by Evergreen" />
         <title>{siteTitle ? siteTitle : "Smart-city"}</title>
       </Head>
+      <Nav></Nav>
       <main>
-        <div className="md:bg-[url('/Assets/background1.png')] sm:fixed w-full h-full">
-          <div className="welcome_div py-9 pt-12 w-full bg-white  md:w-4/5 lg:w-3/4 xl:w-[60%] sm:absolute left-[50%] top-[50%] sm:transform sm:translate-x-[-50%] sm:translate-y-[-50%]">
-            <div className="content w-[90%] md:w-2/3 lg:w-3/5 mx-auto">
-              <header className="text-center">
-                <h2 className=" text-xl md:text-2xl lg:text-3xl font-bold tracking-wider ">
-                  Welcome Back
-                </h2>
-                <p className="my-2 sm:text-md lg:text-lg">
-                  Welcome back, please re-enter your details
-                </p>
-              </header>
+        <div className="welcome_div py-6 pt-10 w-full bg-white  md:w-4/5 lg:w-3/4 xl:w-[60%] sm:absolute left-[50%] top-[55%] sm:transform sm:translate-x-[-50%] sm:translate-y-[-50%]">
+          <div className="content w-[90%] md:w-2/3 lg:w-3/5 mx-auto">
+            <header className="text-center">
+              <h2 className=" text-xl md:text-2xl lg:text-3xl font-bold tracking-wider ">
+                Welcome Back
+              </h2>
+              <p className="my-2 sm:text-md lg:text-lg">
+                Welcome back, please re-enter your details
+              </p>
+            </header>
 
-              <form onSubmit={handleSubmit} className="mt-5">
-                {/* <ErrorMessage message = 'Incorrect email or password. try again!'/> */}
-                <div className="email mb-3 mt-4">
-                  <label
-                    htmlFor="email"
-                    className="text-md text-[#0D1E07]font-normal"
-                  >
-                    Email Address
-                  </label>
-                  <br />
+            <form onSubmit={handleSubmit} className="mt-5">
+              {/* <ErrorMessage message = 'Incorrect email or password. try again!'/> */}
+              <div className="email mb-3 mt-4">
+                <label
+                  htmlFor="email"
+                  className="text-md text-[#0D1E07]font-normal"
+                >
+                  UserName
+                </label>
+                <br />
+                <input
+                  className="outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm "
+                  type="Username"
+                  value={userName}
+                  onChange={(event) => setUserName(event.target.value)}
+                  placeholder="Enter your Username"
+                  autoComplete="off"
+                  required
+                />
+              </div>
+              <div className="password mb-3">
+                <label
+                  htmlFor="password"
+                  className=" text-md text-[#0D1E07]font-normal"
+                >
+                  Password
+                </label>
+                <br />
+                <div className=" relative outline outline-1 outline-[#808080]  mt-2  px-4 py-[0.5em] rounded-sm ">
                   <input
-                    className="outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm "
-                    type="email"
-                    value={email}
-                    onChange={event=> setEmail(event.target.value)} 
-                    
-                    placeholder="Enter your email address"
+                    className="w-[90%] outline-none"
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter your password"
                     autoComplete="off"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    // onChange={changeHandler}
                     required
                   />
-                </div>
-                <div className="password mb-3">
-                  <label
-                    htmlFor="password"
-                    className=" text-md text-[#0D1E07]font-normal"
+                  <span
+                    onClick={() => setShowPassword(!showPassword)}
+                    className=" cursor-pointer absolute right-4 "
                   >
-                    Password
-                  </label>
-                  <br />
-                  <div className=" relative outline outline-1 outline-[#808080]  mt-2  px-4 py-[0.5em] rounded-sm ">
-                    <input
-                      className="w-[90%] outline-none"
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Enter your password"
-                      autoComplete="off"
-                      value={password} 
-                      onChange={event=> setPassword(event.target.value)} 
-                                        
-                      // onChange={changeHandler}
-                      required
-                    />
-                    <span
-                      onClick={() => setShowPassword(!showPassword)}
-                      className=" cursor-pointer absolute right-4 "
-                    >
-                      {!showPassword ? (
-                        <VisibilityOutlinedIcon style={{ color: "#808080" }} />
-                      ) : (
-                        <VisibilityOffOutlinedIcon
-                          style={{ color: "#808080" }}
-                        />
-                      )}
-                    </span>
-                  </div>
+                    {!showPassword ? (
+                      <VisibilityOutlinedIcon style={{ color: "#808080" }} />
+                    ) : (
+                      <VisibilityOffOutlinedIcon style={{ color: "#808080" }} />
+                    )}
+                  </span>
                 </div>
-                <div className="next flex flex-wrap xs:flex-nowrap items-center justify-between text-center">
-                  <div className="remember_me w-full xs:w-fit  ">
-                    <FormControlLabel
-                      disableTypography={true}
-                      sx={{
-                        fontSize: 15,
-                      }}
-                      control={<Checkbox size="small" />}
-                      label="Remember Me"
-                    />
-                  </div>
+              </div>
+              <div className="next flex flex-wrap xs:flex-nowrap items-center justify-between text-center">
+                <div className="remember_me w-full xs:w-fit  ">
+                  <FormControlLabel
+                    disableTypography={true}
+                    sx={{
+                      fontSize: 15,
+                    }}
+                    control={<Checkbox size="small" />}
+                    label="Remember Me"
+                  />
+                </div>
+                <div className="forgot_password w-full xs:w-fit mt-3 xs:mt-0">
+                  <a
+                    className="text-[#2131C2] font-sans hover:underline hover:text-blue-700"
+                    href="#"
+                  >
+                    Forgot Password?
+                  </a>
+                </div>
+              </div>
+              <div className="button text-center my-10 lg:my-14">
+                <button
+                  className="bg-[#2131C2] text-white font-medium text-md py-[0.5em] px-[5em] rounded-md hover:bg-blue-800"
+                  // type="submit"
+                  onClick={() => handleSubmit}
+                >
+                  {" "}
+                  {loading ? (
+                    <CircularProgress size={20} color="inherit" />
+                  ) : (
+                    "Sign in"
+                  )}
+                </button>
+                <div className="next flex flex-wrap xs:flex-nowrap mt-7 items-center justify-center text-center">
+                  <div>Dont have an account?</div>
                   <div className="forgot_password w-full xs:w-fit mt-3 xs:mt-0">
                     <a
-                      className="text-[#2131C2] font-sans hover:underline hover:text-blue-700"
+                      className="text-[#2131C2] font-sans hover:underline m-2 hover:text-blue-700"
                       href="#"
                     >
-                      Forgot Password?
+                      <Link href="/signup ">
+                        <a>SignUp</a>
+                      </Link>
+                      {/* SignUp */}
                     </a>
                   </div>
                 </div>
-                <div className="button text-center my-10 lg:my-14">
-                  <button
-                    className="bg-[#2131C2] text-white font-medium text-md py-[0.5em] px-[5em] rounded-md hover:bg-blue-800"
-                    // type="submit"
-                    onClick={()=>handleSubmit}
-                  >
-                    {" "}
-                    {loading ? (
-                      <CircularProgress size={20} color="inherit" />
-                    ) : (
-                      "Sign in"
-                    )}
-                  </button>
-                  <div className="next flex flex-wrap xs:flex-nowrap mt-7 items-center justify-center text-center">
-                    <div>Dont have an account?</div>
-                    <div className="forgot_password w-full xs:w-fit mt-3 xs:mt-0">
-                      <a
-                        className="text-[#2131C2] font-sans hover:underline m-2 hover:text-blue-700"
-                        href="#"
-                      >
-                        SignUp
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </main>
-    </div>
+    </Container>
+    // </div>
   );
 };
 
