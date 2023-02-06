@@ -32,25 +32,23 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
     if (loading) return null;
     setLoading(true);
     const formData = new FormData();
-    formData.append("email", email);
+    formData.append("username", email);
     formData.append("password", password);
     let TOASTID = toast.loading("Settings up contents");
-    fetch(`${CTX.url}authUser/login.php`, {
+    fetch(`${CTX.url}auth/login`, {
       method: "POST",
       // mode: "no-cors",
-      // headers: new Headers({ "Content-Type": "application/json" }),
-      body: formData,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: email, password: password }),
     })
-      .then((res) => res.text())
+      .then((res) => res.json())
       .then((res) => {
         setLoading(false);
-        if (res.includes("invalide email or password")) {
-          toast.dismiss(TOASTID);
-          toast.error("Login failed. Invalid email or password");
-          return
-        }
-
-        
+        // if (res.includes("invalide email or password")) {
+        //   toast.dismiss(TOASTID);
+        //   toast.error("Login failed. Invalid email or password");
+        //   return;
+        // }
 
         console.log("res ====>>>>>");
         console.log("res ====>>>>>");
@@ -98,15 +96,15 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
                     htmlFor="email"
                     className="text-md text-[#0D1E07]font-normal"
                   >
-                    Email Address
+                    Username
                   </label>
                   <br />
                   <input
                     className="outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm "
-                    type="email"
+                    type="text"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
-                    placeholder="Enter your email address"
+                    placeholder="Enter your email"
                     autoComplete="off"
                     required
                   />
@@ -182,7 +180,7 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
                     <div className="forgot_password w-full xs:w-fit mt-3 xs:mt-0">
                       <a
                         className="text-[#2131C2] font-sans hover:underline m-2 hover:text-blue-700"
-                        href="#"
+                        href="signup"
                       >
                         SignUp
                       </a>

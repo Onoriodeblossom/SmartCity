@@ -10,7 +10,7 @@ interface Props {
 
 const MyApp: React.FC<Props> = ({ Component, pageProps }) => {
   // const url = "https://smatcity.000webhostapp.com/api/";
-  const url = " https://smatcity.com/api/api/";
+  const url = "https://smatcity.com/";
   const [token, setToken] = useState("");
   const [user, setUser] = useState({});
 

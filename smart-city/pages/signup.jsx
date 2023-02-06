@@ -24,8 +24,10 @@ const Signup = ({ siteTitle }) => {
   const [loading, setLoading] = useState(false);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("")
   const [password, setPassword] = useState("");
   const [country, setCountry] = useState("");
+  const [phoneNumbers, setPhoneNumbers] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("");
   //const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -35,7 +37,6 @@ const Signup = ({ siteTitle }) => {
   const OnSubmitFormHandler = (e) => {
     e.preventDefault();
     if (!acceptTerms) return null;
-    // if (loading) return null;
     if (password.length < 8) {
       toast.error("Password must be 8 characters or longer");
       return;
@@ -44,7 +45,8 @@ const Signup = ({ siteTitle }) => {
       toast.error("Passwords do not match");
       return;
     }
-
+    
+    if (loading) return null;
     setLoading(true);
     // const formData = new FormData();
     // formData.append("email", email);
@@ -52,30 +54,41 @@ const Signup = ({ siteTitle }) => {
     // formData.append("password", password);
     // formData.append("c_password", confirmPassword);
     let TOASTID = toast.loading("Settings up contents");
-    fetch(`${CTX.url}users/`, {
+    fetch(`${CTX.url}auth/register`, {
       method: "POST",
       // body: formData,
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: email,
-        fullname: fullName,
+        username: username,
+        firstname: fullName.split(' ')[0],
+        lastname: fullName.split(' ')[1],
         password: password,
+        phoneNumbers,
         c_password: confirmPassword,
       }),
     })
-      .then((res) => res.text())
+      .then((res) => res.json())
       .then((res) => {
-        if (res.includes("sign up succ")) {
+        if (res.success) {
           toast.dismiss(TOASTID);
           toast.success("Sign up successful");
           window.location.href = "login";
           return;
         }
 
-        if (res.includes("email already exist")) {
-          toast.dismiss(TOASTID);
-          toast.error("Email already exist");
-          return
-        }
+
+
+        // if (res.includes("email already exist")) {
+        //   toast.dismiss(TOASTID);
+        //   toast.error("Email already exist");
+        //   return
+        // }
+
+
+
+        
+
 
         console.log("res ====>>>>>");
         console.log("res ====>>>>>");
@@ -86,7 +99,7 @@ const Signup = ({ siteTitle }) => {
         console.log("res ====>>>>>");
         console.log("res ====>>>>>");
         toast.dismiss(TOASTID);
-        toast.error("An error occurred ");
+        toast.error(res.error);
         setLoading(false);
       })
       .catch((e) => {
@@ -102,7 +115,7 @@ const Signup = ({ siteTitle }) => {
       <div className="text-sm">
         By creating an account, you confirm that you accept Smart city{" "}
         <a className="text-blue-500 hover:text-blue-700" href="#">
-          // mode: "no-cors", Terms and Condition
+          {/* // mode: "no-cors", Terms and Condition */}
         </a>{" "}
         and{" "}
         <a className="text-blue-500 hover:text-blue-700" href="#">
@@ -171,6 +184,43 @@ const Signup = ({ siteTitle }) => {
                     required
                   />
                 </div>
+
+                <div className="email mb-3 mt-4">
+                  <label
+                    htmlFor="email"
+                    className="text-md text-[#0D1E07]font-normal"
+                  >
+                    Username
+                  </label>
+                  <br />
+                  <input
+                    className="outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm "
+                    placeholder="Enter your email address"
+                    autoComplete="off"
+                    required
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
+
+                <div className="email mb-3 mt-4">
+                  <label
+                    htmlFor="email"
+                    className="text-md text-[#0D1E07]font-normal"
+                  >
+                    Phone Numbers
+                  </label>
+                  <br />
+                  <input
+                    className="outline outline-1 outline-[#808080] w-full mt-2  px-4 py-[0.5em] rounded-sm "
+                    placeholder="Enter your phone number"
+                    autoComplete="off"
+                    required
+                    value={phoneNumbers}
+                    onChange={(e) => setPhoneNumbers(e.target.value)}
+                  />
+                </div>
+
                 <div className="email mb-3 mt-4">
                   <label
                     htmlFor="email"
