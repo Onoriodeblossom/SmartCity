@@ -33,7 +33,7 @@ const InnerLabel = styled.label`
 
 const Label = styled.label`
   font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
-  color: #0d1e07;
+  color:${({ color }) => (color ? color : "#0d1e07")}; ;
   font-weight: 500;
   padding: 0.4rem;
   top: ${({ top }) => (top ? top : "")};
@@ -48,6 +48,7 @@ const InputStyles = styled.input`
   font-size: ${({ fontSize }) => (fontSize ? fontSize : "1rem")};
   border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : "5px")};
   outline: none;
+  color:#000;
   padding: ${({ padding }) => (padding ? padding : "0.8rem")};
   background: ${({ background }) => (background ? background : `#fff`)};
 `;
@@ -86,6 +87,7 @@ export const Input = ({
   placeholder,
   border,
   fontSize,
+  color,
   borderRadius,
   background,
   error,
@@ -109,13 +111,13 @@ export const Input = ({
       {value === "" ? (
         label ? (
           <>
-            <Label fontSize={labelFontSize}>{label}</Label>
+            <Label fontSize={labelFontSize} color={color}>{label}</Label>
            
           </>
         ) : null
       ) : (
         <>
-          <Label top={"-12px !important"} fontSize={labelFontSize}>
+          <Label top={"-12px !important"} color={color} fontSize={labelFontSize}>
             {label}
           </Label>
          

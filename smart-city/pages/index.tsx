@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import { Provider } from "react-redux";
 import LoginPage from "./login";
 import store from "./store/store";
-import HostelDetails from "./hostelDetails";
+import Slash2 from "./slash2/slash2";
 import Homes from "./home";
-import LandingPage from "./landing";
 
 const Home = () => {
   return (
-    <Provider store={store}>
-      <Homes />
-    </Provider>
+    // <Provider store={store}>
+      <Slash2/>
+    // </Provider>
   );
 };
 

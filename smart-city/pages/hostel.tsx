@@ -12,6 +12,7 @@ import { Article, H1 } from "../components/styles";
 import HostelCard from "../components/hostelCard/hotelCard";
 import { Flex } from "../components/hostelCard/styles";
 import LodgeCard from "../components/lodgeCard/lodgeCard";
+import {RoundButton} from "../components/roundButton/roundButton"
 
 
 const Hostel  = () =>{
@@ -42,9 +43,7 @@ const Hostel  = () =>{
     {
       image:"/Assets/Agent.png"
     },
-    {
-      image:"/Assets/Agent.png"
-    },
+    
   ] 
     // const [becomeContact, setBecomeContant] = useState(false);
     return(
@@ -74,24 +73,18 @@ const Hostel  = () =>{
                   </div>
                   <button className="
                     px-3 sm:px-4 py-1 text-center text-[#1c214e] bg-white rounded-[3px] mx-auto sm:mx-0  mt-3 sm:mt-0  xl:py-3 xl:px-6">Search</button>
-                  <div className="room-type w-fit">
-                    <HeroOption
-                      title="Room Type"
-                      options={["Self contained","Shared", "Both"]}
-                    />
-                  </div>
-                  <div className="Location w-fit">
-                  <HeroOption
-                      title="Location"
-                      options={["Ekosodin","BDPA", "osasogie"]}
-                    />
-                  </div>
-                  <div className="price-range w-fit">
-                  <HeroOption
-                    title="Price range"
-                    options={["#150-200k", "#200k-300k", "#300k-500k"]}
-                    />
-                  </div>
+                  {/* <div className="room-type w-fit"> */}
+                    <div style={{width:"50%", display:"flex", justifyContent:"space-around" }}>
+
+                    <RoundButton text="Choose Room" number="1"/>
+                 
+                 <RoundButton text="Make Payment" number="2"/>
+                  
+                 <RoundButton text="Booking Comfirmation" number="3"/>
+                    </div>
+                    
+              
+                  {/* </div> */}
                   <div>
                   </div>   
                 </div>
@@ -99,7 +92,7 @@ const Hostel  = () =>{
             </div> 
           </HeroSection> 
         </section> 
-        <div className=" h-[90px] lg:h-[120px]  bg-[#E5E5E5]">
+        <div className=" h-[90px] lg:h-[100px]  bg-[#E5E5E5]">
         </div>
         <section 
         className="py-[3em] px-[2em] lg:px-[3em] lg:py-[4em]"
@@ -143,6 +136,28 @@ const Hostel  = () =>{
          className="py-[3em] px-[2em] lg:px-[3em] lg:py-[4em]"
         >
           
+        </section>
+         <div className=" h-[90px] lg:h-[100px]  bg-[#E5E5E5]">
+        </div>
+        <section 
+        className="py-[3em] px-[2em] lg:px-[3em] lg:py-[4em]"
+        >
+          <Article>
+              <H1>Recommended Hostels</H1>
+            </Article>
+            <Flex >
+
+            {
+            hostel.map((image)=>(
+
+
+              <HostelCard/>
+            ))}
+          
+            </Flex>
+
+         
+         
         </section>
           </Layout> 
         </main>

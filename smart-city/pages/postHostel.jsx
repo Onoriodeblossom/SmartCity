@@ -1,3 +1,5 @@
+
+
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,8 +21,9 @@ import ScrollingDiv from "../components/Carousel/index";
 import HostelInfo from "../components/HostelInfo/HostelInfo.component";
 import FormSection from "../components/formSection/formSection.component";
 import { RoundButton } from "../components/roundButton/roundButton";
+import {HostelForm} from "../components/hostelForm/hostel-form"
 
-const Checkout = () => {
+const PostHostel = () => {
   // const [becomeContact, setBecomeContant] = useState(false);
   const ImageTextCardData = [
     { cardText: "hello this" },
@@ -70,42 +73,12 @@ const Checkout = () => {
             <HeroSection>
               <div className=" absolute left-[50%] top-[50%] md:top-[40%] xl:top-[45%] transform translate-x-[-50%] translate-y-[-50%] w-[100%] text-center text-white">
                 <h1 className="text-[25px] sm:text-[35px] md:text-[40px] xl:text-[52px] lg:text-[42px]  font-semibold">
-                  Smart city
+                Vacating a house ? upload the house to get paid 
                 </h1>
                 <p className="text-[15px] my-2 md:text-lg lg:text-xl xl:text-2xl mx-auto w-[80%]">
-                  Tired of hostel hunting? we are here to ease your stress with
-                  our numerous hostel offers
+                Get paid #10,000 by making available the information about the vacating space to prospective tenant.
                 </p>
-                <form
-                className="bg-[#302121] w-[90%] md:w-[80%] opacity-80  mx-auto my-[4em] py-6 px-5"
-              >
-                <p className="text-[#BDBDBD]">Pay only #2000 to unlock 1 hostel location and only #10,000 to unlock 6 different locations</p>
-                <div className="flex  mx-auto items-center justify-between flex-wrap my-4 lg:my-[2em]">
-                  <div className="search-input">
-                    <input type="text" className=" px-3 sm:px-4 py-1 lg:py-2 xl:py-3  text-white  mx-auto sm:mx-0   bg-transparent border border-white border-solid  rounded-[3px] placeholder-[#BDBDBD]" placeholder="Search Hostel" 
-                    required
-                    />
-                  </div>
-                  <button className="
-                    px-3 sm:px-4 py-1 text-center text-[#1c214e] bg-white rounded-[3px] mx-auto sm:mx-0  mt-3 sm:mt-0  xl:py-3 xl:px-6">Search</button>
-                  <div className="room-type w-fit">
-                    <RoundButton text="Choose Room" number="1"/>
-                    {/* <RoundButton>
-
-                    </RoundButton> */}
-                  </div>
-                  <div className="Location w-fit">
-                 <RoundButton text="Make Payment" number="2"/>
-                  </div>
-                  <div className="price-range w-fit">
-                  
-                 <RoundButton text="Booking Comfirmation" number="3"/>
-              
-                  </div>
-                  <div>
-                  </div>   
-                </div>
-              </form>
+                <button className=" bg-white text-[#2131C2] px-10 py-3 rounded-sm font-normal text-sm md:text-md lg:text-lg">Post Hotel</button>
               </div>
             </HeroSection>
           </section>
@@ -136,38 +109,36 @@ const Checkout = () => {
             boxedLayout
             paddingVertical="5rem"
           >
-            <FormSection />
+            <ScrollingDiv
+          scrollCardBg="transparent"
+          scrollOuterBg="transparent"
+          scrollCardGaps="0 1rem"
+        >
+          {ImageTextCardData.map(({ cardText }) => (
+            <ImageTextCard />
+          ))}
+        </ScrollingDiv>
+
+
           </FlexibleDiv>
 
-          {/* <FlexibleDiv flexDirection="column" boxedLayout>
-            <SectionHeader text="What people have to say about the hostels" />
-            <FlexibleDiv resFlexDirection="row">
-              {testimonialData.map(({ name, testimonial, image }) => (
-                <TestimonialCard
-                  testimonial={testimonial}
-                  name={name}
-                  image={image}
-                />
-              ))}
-            </FlexibleDiv>
-          </FlexibleDiv> */}
+      
 
-          <FlexibleDiv
-            flexDirection="column"
-            boxedLayout
-            paddingVertical="5rem"
-          >
-            <ReviewSection />
-          </FlexibleDiv>
+          
+             <Article>
+              <H1>Upload accommodation space  here</H1>
+            </Article>
+            <HostelForm/>
 
-          {/* <FlexibleDiv flexDirection="column" boxedLayout>
-            <SectionHeader text="Recommended Hostels" />
-            <FlexibleDiv></FlexibleDiv>
-          </FlexibleDiv> */}
+
+
+
+        
+
         </Layout>
       </main>
     </div>
   );
 };
 
-export default Checkout;
+export default PostHostel;

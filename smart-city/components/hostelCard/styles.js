@@ -11,17 +11,25 @@ display:flex;
 padding-bottom:10px;
 border-radius: 20px;
 flex-direction:column;
-box-shadow: 0.3px -5px 2px 0.2px rgba(0, 0, 0, 0.2);
-background-color:white;
-margin-top:10px;
-margin-bottom:10px;
+margin-top:20px;
+margin-bottom:20px;
+width:25%;
+
+
+@media (max-width: 900px) {
+    width: 45%;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 
 `
 
 export const Section = styled.div`
 
 /* background-color:blue; */
-width:90%
+width:80%
 `
 
 export const CardTitle = styled.p`
@@ -49,6 +57,10 @@ flex-wrap:wrap;
 justify-content:space-between;
 align-items:center;
 width: ${(props)=> props.width ? props.width : "100%"}
+
+@media (max-width: 900px) {
+    width: 100%;
+  }
 
 `
 export const List = styled.div`
