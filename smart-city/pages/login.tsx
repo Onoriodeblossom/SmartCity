@@ -27,38 +27,59 @@ const LoginPage: React.FC<Props> = ({ siteTitle }) => {
   const [data, setData] = useState("");
   const [msg, setMsg] = useState("");
 
+  // login and get user handler
   const OnSubmitFormHandler = (e) => {
     e.preventDefault();
     if (loading) return null;
     setLoading(true);
-    const formData = new FormData();
-    formData.append("username", email);
-    formData.append("password", password);
     let TOASTID = toast.loading("Settings up contents");
     fetch(`${CTX.url}auth/login`, {
       method: "POST",
-      // mode: "no-cors",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: email, password: password }),
     })
       .then((res) => res.json())
-      .then((res) => {
+      .then(async (res) => {
         setLoading(false);
-        // if (res.includes("invalide email or password")) {
-        //   toast.dismiss(TOASTID);
-        //   toast.error("Login failed. Invalid email or password");
-        //   return;
-        // }
+        if (res.success) {
+          
+          // now get user details = 
+          const fetched = await fetch(`${CTX.url}auth/user`, {
+            credentials: "include",
+          });
+          const jsoned = await fetched.json();
+          toast.dismiss(TOASTID);
+          toast.success("Login successful");
+          // CTX.setToken("assaasdasdasd")
+
+
+          console.log("jsoned HERE!!! ====> ");
+          console.log("jsoned HERE!!! ====> ");
+          console.log("jsoned HERE!!! ====> ");
+          console.log("jsoned HERE!!! ====> ");
+          console.log("jsoned HERE!!! ====> ");
+          console.log("jsoned HERE!!! ====> ", jsoned);
+          console.log("jsoned HERE!!! ====> ");
+          console.log("jsoned HERE!!! ====> ");
+          console.log("jsoned HERE!!! ====> ");
+          console.log("jsoned HERE!!! ====> ");
+
+          // window.location.href = "/"
+          return;
+        }
 
         console.log("res ====>>>>>");
         console.log("res ====>>>>>");
         console.log("res ====>>>>>");
         console.log("res ====>>>>>");
-        console.log("res.split() ====>>>>>", res.split('":"'));
+        console.log("res.split() ====>>>>>", res);
         console.log("just res ====>>>>>", res);
         console.log("res ====>>>>>");
         console.log("res ====>>>>>");
         console.log("res ====>>>>>");
+        toast.dismiss(TOASTID);
+        toast.error(res.error);
       })
       .catch((e) => {
         toast.dismiss(TOASTID);
