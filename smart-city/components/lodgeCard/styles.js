@@ -5,7 +5,7 @@ import { PropaneSharp } from "@mui/icons-material";
 
 export const Container = styled.div`
 height:max-content;
-width:270;
+width:25%;
 justify-content:center;
 align-items:center;
 display:flex;
@@ -14,15 +14,19 @@ margin:0;
 padding-bottom:20px;
 border-radius: 20px;
 flex-direction:column;
-/* box-shadow: 0.3px -5px 10px 0.6px rgba(0, 0, 0, 0.2); */
-/* background-color:white; */
+@media (max-width: 900px) {
+    width: 40%;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 
 `
 
 export const Section = styled.div`
 
-/* background-color:blue; */
-width:90%
+width:80%
 `
 
 export const CardTitle = styled.p`

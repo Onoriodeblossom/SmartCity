@@ -7,7 +7,7 @@ import Image from "next/image"
     return(
         <Container>
             <Image
-              src={'/Assets/Agent.png'}
+              src={'/Assets/lodge.png'}
               alt="vid"
               width={340}
               height={200}

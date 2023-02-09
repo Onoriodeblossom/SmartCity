@@ -15,11 +15,11 @@ const HostelCard = () => {
   return (
     <Container>
       <Image
-        src={"/Assets/Agent.png"}
+        src={"/Assets/home.png"}
         alt="vid"
         // layout="fill"
 
-        width={300}
+        width={360}
         height={200}
         style={{padding:0, margin:0}}
         quality={100}
@@ -37,15 +37,15 @@ const HostelCard = () => {
           </List>
           <List>
             <Dot />
-            <Text color="#333">Light</Text>
+            <Text color="#333">Water</Text>
           </List>
           <List>
             <Dot />
-            <Text color="#333">Light</Text>
+            <Text color="#333">Kitchen</Text>
           </List>
           <List>
             <Dot />
-            <Text color="#333">Light</Text>
+            <Text color="#333">WarDrope</Text>
           </List>
         </Flex>
       </Section>

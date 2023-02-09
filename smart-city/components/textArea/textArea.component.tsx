@@ -8,7 +8,7 @@ const TextAreaStyles = styled.textarea`
   font-size: ${({ fontSize }) => (fontSize ? fontSize : "14px")};
   border-radius: ${({ borderRadius }) =>
     borderRadius ? borderRadius : "10px"};
-  padding: 1rem;
+  padding: 0rem;
   resize: none;
   outline: none;
   background: ${({ background }) => (background ? background : `#fff`)};
