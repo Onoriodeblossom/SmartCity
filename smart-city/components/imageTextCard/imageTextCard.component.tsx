@@ -9,7 +9,7 @@ import {
 import CardBg from "../../public/Assets/cardBg.png";
 import { FiPlayCircle as PlayIcon } from "react-icons/fi";
 
-const ImageTextCard = () => {
+const ImageTextCard = (props) => {
   return (
     <ImageTextCardWrapper flexDirection="column" alignItems="flex-start">
       <ImageWrapper>
@@ -22,7 +22,7 @@ const ImageTextCard = () => {
           layout="fill"
         />
       </ImageWrapper>
-      <CardText>hello text</CardText>
+      <CardText>{props.text}</CardText>
     </ImageTextCardWrapper>
   );
 };

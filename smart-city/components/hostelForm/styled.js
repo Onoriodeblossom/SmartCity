@@ -34,7 +34,7 @@ export const Label = styled.p`
 export const Flex = styled.div`
 display:flex;
 width: ${({ width }) => (width ? width : `60%`)};
-justify-content:space-between;
+justify-content: ${({justify})=> (justify ? justify: "space-between")};
 padding-top:${({ top }) => (top ? top : `0`)};
 flex-direction:${({ flexibleDirection }) => (flexibleDirection ? flexibleDirection : `flex`)};
 
@@ -120,6 +120,30 @@ export const HeaderText = styled.h2`
   padding: 0;
 `;
 
+
+ export const ImagePickerContainer = styled.div`
+ display:flex;
+ width:70%;
+ padding-bottom:20px;
+ justify-content:space-between;
+ 
+ @media (max-width: 920px) {
+  width: 100%;
+  flex-wrap:wrap;
+  margin-right: 0;
+}
+ 
+ 
+ 
+ `
+
+ export const Width = styled.div`
+ width:15%;
+ @media (max-width: 1300px) {
+  width: 100%;
+  
+}
+ `
 
 
 export const FormWrapper = styled.form`

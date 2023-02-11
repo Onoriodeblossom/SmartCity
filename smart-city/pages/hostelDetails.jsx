@@ -21,13 +21,13 @@ import HostelInfo from "../components/HostelInfo/HostelInfo.component";
 const HostelDetails = () => {
   // const [becomeContact, setBecomeContant] = useState(false);
   const ImageTextCardData = [
-    { cardText: "hello this" },
-    { cardText: "hello this" },
-    { cardText: "hello this" },
-    { cardText: "hello this" },
-    { cardText: "hello this" },
-    { cardText: "hello this" },
-    { cardText: "hello this" },
+    { cardText: "Kitchen" },
+    { cardText: "Bedroom" },
+    { cardText: "Basement" },
+    { cardText: "Bath room" },
+    { cardText: "Sitting room" },
+    { cardText: "woardrob" },
+    { cardText: "Others" },
     { cardText: "hello this" },
     { cardText: "hello this" },
     { cardText: "hello this" },
